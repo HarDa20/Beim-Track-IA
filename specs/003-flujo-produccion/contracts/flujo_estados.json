@@ -1,0 +1,32 @@
+{
+  "$comentario": "Contrato ejecutable del flujo de pedidos de BEIM Track. Es la fuente de verdad de RF-FLU-01, RF-FLU-02 y RF-FLU-05. tests/pruebas_spec.php comprueba que includes/pedidos.php coincide exactamente con este archivo. Para cambiar el flujo: primero se cambia aquí (y en spec.md), luego el código.",
+  "version": "2.0",
+  "estados": ["Borrador", "Recibido", "En diseño", "En producción", "Control de calidad", "Listo para entrega", "Entregado", "Cancelado"],
+  "estados_activos": ["Recibido", "En diseño", "En producción", "Control de calidad", "Listo para entrega"],
+  "estados_finales": ["Entregado", "Cancelado"],
+  "area_por_estado": {
+    "Recibido": "Recepción",
+    "En diseño": "Diseño",
+    "En producción": "Producción",
+    "Control de calidad": "Calidad",
+    "Listo para entrega": "Recepción"
+  },
+  "transiciones": [
+    { "desde": "Recibido",           "hacia": "En diseño",          "requiere_motivo": false, "roles": ["administrador", "empleado:Recepción"] },
+    { "desde": "Recibido",           "hacia": "Cancelado",          "requiere_motivo": true,  "roles": ["administrador", "empleado:Recepción", "cliente:propietario"] },
+    { "desde": "En diseño",          "hacia": "En producción",      "requiere_motivo": false, "roles": ["administrador", "empleado:Diseño"] },
+    { "desde": "En diseño",          "hacia": "Cancelado",          "requiere_motivo": true,  "roles": ["administrador"] },
+    { "desde": "En producción",      "hacia": "Control de calidad", "requiere_motivo": false, "roles": ["administrador", "empleado:Producción"] },
+    { "desde": "En producción",      "hacia": "Cancelado",          "requiere_motivo": true,  "roles": ["administrador"] },
+    { "desde": "Control de calidad", "hacia": "Listo para entrega", "requiere_motivo": false, "roles": ["administrador", "empleado:Calidad"] },
+    { "desde": "Control de calidad", "hacia": "En producción",      "requiere_motivo": true,  "roles": ["administrador", "empleado:Calidad"] },
+    { "desde": "Control de calidad", "hacia": "Cancelado",          "requiere_motivo": true,  "roles": ["administrador"] },
+    { "desde": "Listo para entrega", "hacia": "Entregado",          "requiere_motivo": false, "roles": ["administrador", "empleado:Recepción"] },
+    { "desde": "Listo para entrega", "hacia": "Cancelado",          "requiere_motivo": true,  "roles": ["administrador"] }
+  ],
+  "reglas": {
+    "empleado_bloqueado_si_otro_responsable": true,
+    "responsable_se_libera_al_cambiar_de_area": true,
+    "borrador_visible_para_empleados": false
+  }
+}

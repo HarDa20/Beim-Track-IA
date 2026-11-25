@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "specs/constitucion.md"
+  ],
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "php -l *": "allow",
+      "php tests/pruebas_spec.php": "allow",
+      "php tests/verificar_specs.php": "allow",
+      "php tests/pruebas_funcionales.php *": "allow",
+      "git status": "allow",
+      "git diff*": "allow",
+      "rm *": "deny",
+      "php tests/arnes_chatbot.php*": "allow"
+    }
+  }
+}

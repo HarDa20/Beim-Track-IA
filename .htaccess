@@ -1,0 +1,10 @@
+# BEIM Track · Protección básica para Apache (XAMPP)
+# @spec RNF-SEG-05, RF-ARC-02
+Options -Indexes
+
+# Archivos que nunca deben descargarse desde el navegador
+<FilesMatch "(^\.env|\.(sql|md|log|sh|example)$|^\.git|^opencode\.json$)">
+    Require all denied
+</FilesMatch>
+
+ErrorDocument 403 "Acceso denegado"

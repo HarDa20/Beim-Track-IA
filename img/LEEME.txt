@@ -1,0 +1,9 @@
+Imágenes de la marca (specs 012 y 014)
+
+- logo.png     Pon aquí el logo real de la empresa (PNG cuadrado, fondo transparente,
+               mínimo 128x128). El sistema lo usará automáticamente en el ingreso,
+               el menú y la pestaña del navegador. Si no existe, se usa el logo vectorial.
+
+- mascota.png  Pon aquí el muñeco del asistente Beimy (por ejemplo, creado con
+               Nano Banana). PNG con fondo transparente, proporción 1:1 o vertical.
+               Si no existe, se usa la mascota animada en SVG.

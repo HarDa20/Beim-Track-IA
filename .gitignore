@@ -1,0 +1,16 @@
+# Credenciales locales
+.env
+
+# Archivos subidos por los usuarios (datos de clientes)
+uploads/*
+!uploads/.htaccess
+!uploads/index.html
+
+# Pruebas automáticas
+tests/tmp/
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

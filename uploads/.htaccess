@@ -1,0 +1,2 @@
+# Los archivos de diseño solo se descargan mediante archivo.php (con control de acceso)
+Require all denied
